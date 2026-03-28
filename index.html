@@ -225,20 +225,6 @@
                     <svg id="theme-icon-light" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     <svg id="theme-icon-dark" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                 </button>
-                <!-- Menu Dropdown -->
-                <div class="relative" id="menu-container">
-                    <!-- Menu Button (Hamburger Icon) -->
-                    <button id="menu-toggle-btn" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" aria-haspopup="true" aria-expanded="false" aria-label="Main Menu">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
-                    </button>
-                    <!-- Dropdown Panel -->
-                    <div id="menu-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-xl z-20 py-1" role="menu">
-                        <a href="#" id="privacyMenuBtn" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" role="menuitem">Privacy Policy</a>
-                        <a href="#" id="termsMenuBtn" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" role="menuitem">Terms of Use</a>
-                    </div>
-                </div>
             </div>
         </div>
         
@@ -1201,12 +1187,6 @@ formulas.forEach(f => {
             const timeDisplay = document.getElementById('time-display');
             const dateDisplay = document.getElementById('date-display');
 
-            // --- Menu & Legal Elements ---
-            const menuToggleBtn = document.getElementById('menu-toggle-btn');
-            const menuDropdown = document.getElementById('menu-dropdown');
-            const privacyMenuBtn = document.getElementById('privacyMenuBtn');
-            const termsMenuBtn = document.getElementById('termsMenuBtn');
-
             // --- Legal Modal Elements ---
             const privacyModal = document.getElementById('privacyModal');
             const closePrivacyModal = document.getElementById('closePrivacyModal');
@@ -1235,22 +1215,7 @@ formulas.forEach(f => {
                 greetingElement.textContent = `${timeOfDayGreeting}, Guest!`;
             };
 
-            // Menu Dropdown Logic
-            menuToggleBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isExpanded = menuToggleBtn.getAttribute('aria-expanded') === 'true';
-                menuToggleBtn.setAttribute('aria-expanded', !isExpanded);
-                menuDropdown.classList.toggle('hidden');
-            });
-            window.addEventListener('click', () => {
-                if (!menuDropdown.classList.contains('hidden')) {
-                    menuDropdown.classList.add('hidden');
-                    menuToggleBtn.setAttribute('aria-expanded', 'false');
-                }
-            });
-            menuDropdown.addEventListener('click', e => e.stopPropagation());
-
-            // --- End Greeting & Menu Logic ---
+            // --- End Greeting Logic ---
             
             // --- Legal Modals Logic ---
             const showPrivacyModal = () => { privacyModal.classList.remove('hidden'); privacyModal.classList.add('flex'); };
